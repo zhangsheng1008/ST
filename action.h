@@ -95,13 +95,15 @@ class ComponentAction : public Action {
 		//void recieve();
 		//void char_recieve();
 		void buildCommand();
-		virtual void processReadResult();
+		virtual void processResult();
 	public:
 		unsigned char* command;
 		String command_str;
 		DWORD command_size;
-		String returnResult;
-		String parseResult[6];
+		String result_str;
+		DWORD result_size;
+		unsigned char result[4096];
+		String parseResult[20];
 		int execute();
 		ComponentAction();
 

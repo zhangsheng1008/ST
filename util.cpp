@@ -90,12 +90,12 @@ void _fastcall initContent(TForm *form, String prefix, String content){
 
 int convertStrToHex(string str){
 	std::stringstream ss;
-	std::ios_base::fmtflags ff;
 	unsigned int x;
 	ss << std::hex <<str;
 	ss >> x;
 	return x;
 }
+
 
 unsigned char* convertHexCommand(String cmd, unsigned int* len){
 	boost::regex reg(HEX_REGEX);
@@ -109,7 +109,8 @@ unsigned char* convertHexCommand(String cmd, unsigned int* len){
 	  *len = *len + 1 ;
 	}
 	it = s.begin();
-	unsigned char *c = new unsigned char[*len];
+	int vLen = *len;
+	unsigned char *c = new unsigned char[vLen];
 	int i = 0;
 	while(boost::regex_search(it, end, m, reg)){
 	  if (m[1].matched)
@@ -118,4 +119,12 @@ unsigned char* convertHexCommand(String cmd, unsigned int* len){
 	  i++;
 	}
 	return c;
+}
+
+String convertHexResult(unsigned char* buf, int len){
+	String res;
+	for (int i = 0; i < len; i++) {
+	   res = res + IntToHex(buf[i], 2);
+	}
+	return res;
 }

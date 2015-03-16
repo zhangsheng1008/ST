@@ -62,43 +62,43 @@
 			<ILINK_TranslatedLibraryPath>$(BDS)\lib\$(LANGDIR)\release;$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
 		</PropertyGroup>
 		<ItemGroup>
-			<CppCompile Include="action.cpp">
-				<DependentOn>action.h</DependentOn>
-				<BuildOrder>5</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="mainflow.cpp">
-				<DependentOn>mainflow.h</DependentOn>
-				<BuildOrder>7</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="uComponentConfig.cpp">
-				<Form>fmComponentConfig</Form>
-				<DependentOn>uComponentConfig.h</DependentOn>
-				<BuildOrder>7</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="util.cpp">
-				<DependentOn>util.h</DependentOn>
-				<BuildOrder>6</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="Proj.cpp">
-				<BuildOrder>0</BuildOrder>
-			</CppCompile>
 			<CppCompile Include="uDM.cpp">
 				<Form>dm</Form>
 				<DesignClass>TDataModule</DesignClass>
 				<DependentOn>uDM.h</DependentOn>
 				<BuildOrder>4</BuildOrder>
 			</CppCompile>
+			<CppCompile Include="Proj.cpp">
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="Proj.res">
+				<BuildOrder>1</BuildOrder>
+			</ResFiles>
 			<CppCompile Include="uMain.cpp">
 				<Form>fmMain</Form>
 				<DependentOn>uMain.h</DependentOn>
 				<BuildOrder>2</BuildOrder>
 			</CppCompile>
-			<ResFiles Include="Proj.res">
-				<BuildOrder>1</BuildOrder>
-			</ResFiles>
-			<FormResources Include="uComponentConfig.dfm"/>
+			<CppCompile Include="mainflow.cpp">
+				<DependentOn>mainflow.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="action.cpp">
+				<DependentOn>action.h</DependentOn>
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="util.cpp">
+				<DependentOn>util.h</DependentOn>
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="uComponentConfig.cpp">
+				<Form>fmComponentConfig</Form>
+				<DependentOn>uComponentConfig.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
 			<FormResources Include="uDM.dfm"/>
 			<FormResources Include="uMain.dfm"/>
+			<FormResources Include="uComponentConfig.dfm"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

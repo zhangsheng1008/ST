@@ -43,3 +43,10 @@ void __fastcall TfmMain::Button2Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+void __fastcall TfmMain::Button3Click(TObject *Sender)
+{
+	unsigned char buf[5] = {0xff, 0xfd, 0x30, 0x01, 0x00};
+	Edit7->Text = convertHexResult(buf, 5);
+}
+//---------------------------------------------------------------------------
+

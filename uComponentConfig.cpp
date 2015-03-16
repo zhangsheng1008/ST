@@ -56,7 +56,7 @@ void __fastcall TfmComponentConfig::btnSendClick(TObject *Sender)
 	cAction.component = loadCompConfig();
 	cAction.execute();
 	memoLog->Lines->Add(cAction.command_str);
-	memoLog->Lines->Add(cAction.returnResult);
+	memoLog->Lines->Add(cAction.result_str);
 	for (int i= 0; i < 5; i++) {
 	  memoLog->Lines->Add("result para " + IntToStr(i) + ": " + cAction.parseResult[i]);
 	}

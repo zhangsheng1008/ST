@@ -34,14 +34,16 @@ void ComponentAction::buildCommand(){
 	  unsigned int len;
 	  command = convertHexCommand(command_str, &len);
 	  command_size = len;
-	  unsigned int sum;
+	  unsigned int sum = 0;
 	  if (operation->checkSum) {
 		 for (int i = 0; i < len - 1; i++) {
+		   ShowMessage(IntToStr((int)sum) + ":" + IntToStr((int)command[i]));
 		   sum = sum + command[i];
 		   if (sum > 255)
 			  sum = sum - 255;
 		 }
 		 command[len-1] = sum;
+		 command_str = command_str.SubString(0, command_str.Length() - 3) + IntToHex((unsigned char)sum, 2);
 	  }
 	} else {
 	  command = command_str.t_str();
@@ -88,9 +90,9 @@ int ComponentAction::closeComPort(){
 int ComponentAction::execute(){
 	if (openComPort() == RESULT_SUCC) {
 		buildCommand();
-		returnResult = sendCommand();
+		sendCommand();
 		closeComPort();
-		processReadResult();
+		processResult();
     }
 	return RESULT_SUCC;
 
@@ -98,7 +100,6 @@ int ComponentAction::execute(){
 
 
 String ComponentAction::sendCommand(){
-	char rcBuf[1024];
 	DWORD lpNumberOfBytesWritten,lpNumberOfBytesRead, lpErr;
 	PurgeComm(hCom,PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);
 	time_t t1, t2;
@@ -110,12 +111,13 @@ String ComponentAction::sendCommand(){
 	}
 	COMSTAT comStat;
 	ClearCommError(hCom,  &lpErr, &comStat);
-	if (comStat.cbInQue > 1024) {
+	if (comStat.cbInQue > 4096) {
 		PurgeComm(hCom,PURGE_RXCLEAR);
 		return "Err";
 	}
-	ReadFile(hCom, rcBuf, comStat.cbInQue, &lpNumberOfBytesRead, NULL);
-	return String(rcBuf);
+	result_size = comStat.cbInQue;
+	ReadFile(hCom, result, comStat.cbInQue, &lpNumberOfBytesRead, NULL);
+	return "Suc";
 }
 
 
@@ -236,10 +238,21 @@ String ComponentAction::sendCommand(){
 //
 //}
 
-void ComponentAction::processReadResult(){
-	TStrings *s = regexMap(returnResult, operation->returnTemplate);
-	for (int i = 0; i < s->Count; i++) {
-		parseResult[i] = (*s)[i];
+void ComponentAction::processResult(){
+	if (component->type != 5) {
+		TStringList *s = new TStringList();
+		s->DelimitedText = operation->returnTemplate;
+		s->Delimiter = ',';
+		for (int i = 0; i < s->Count; i++) {
+           parseResult[i] = IntToStr(result[StrToInt((*s)[i])]);
+		}
+		result_str = convertHexResult(result, result_size);
+	} else {
+		result_str =  String((char*)result);
+		TStrings *s = regexMap(result_str, operation->returnTemplate);
+		for (int i = 0; i < s->Count; i++) {
+			parseResult[i] = (*s)[i];
+		}
 	}
 
 }

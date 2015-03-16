@@ -19,4 +19,5 @@ String _fastcall paraProcess(String src, String para[]);
 TStringList* _fastcall regexMap(String src, String regex);
 void _fastcall initContent(TForm *form, String prefix, String content);
 unsigned char* convertHexCommand(String cmd, unsigned int *len);
+String convertHexResult(unsigned char* buf, int len);
 #endif

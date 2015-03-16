@@ -109,5 +109,6 @@ object fmMain: TfmMain
     Height = 25
     Caption = 'test1'
     TabOrder = 11
+    OnClick = Button3Click
   end
 end
