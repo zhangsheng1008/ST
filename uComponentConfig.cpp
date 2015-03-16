@@ -26,6 +26,7 @@ Component* __fastcall loadCompConfig(){
 	lpdcb->BaudRate = dm->tbComponent->FieldByName("baud_rate")->AsInteger;
 	component->port = "COM" + dm->tbComponent->FieldByName("port")->AsString;
 	component->dcb =  lpdcb;
+	component->type = dm->tbComponent->FieldByName("type")->AsInteger;
 	return component;
 }
 

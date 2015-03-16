@@ -37,11 +37,10 @@ void ComponentAction::buildCommand(){
 	  unsigned int sum = 0;
 	  if (operation->checkSum) {
 		 for (int i = 0; i < len - 1; i++) {
-		   ShowMessage(IntToStr((int)sum) + ":" + IntToStr((int)command[i]));
 		   sum = sum + command[i];
-		   if (sum > 255)
-			  sum = sum - 255;
 		 }
+		 while (sum > 255)
+			sum = sum - 256;
 		 command[len-1] = sum;
 		 command_str = command_str.SubString(0, command_str.Length() - 3) + IntToHex((unsigned char)sum, 2);
 	  }
@@ -239,7 +238,7 @@ String ComponentAction::sendCommand(){
 //}
 
 void ComponentAction::processResult(){
-	if (component->type != 5) {
+	if (component->type == 1) {
 		TStringList *s = new TStringList();
 		s->DelimitedText = operation->returnTemplate;
 		s->Delimiter = ',';
@@ -247,6 +246,14 @@ void ComponentAction::processResult(){
            parseResult[i] = IntToStr(result[StrToInt((*s)[i])]);
 		}
 		result_str = convertHexResult(result, result_size);
+	} else if(component->type == 2){
+		for (int i = 0;i < result_size; i++) {
+           result_str = result_str + (char)(result[i]);
+		}
+		TStrings *s = regexMap(result_str, operation->returnTemplate);
+		for (int i = 0; i < s->Count; i++) {
+			parseResult[i] = (*s)[i];
+		}
 	} else {
 		result_str =  String((char*)result);
 		TStrings *s = regexMap(result_str, operation->returnTemplate);
