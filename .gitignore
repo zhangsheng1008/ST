@@ -42,5 +42,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 Debug/*.*
-_history/*.*
-_history/*.*.*
+__history/*.*
