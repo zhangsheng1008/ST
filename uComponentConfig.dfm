@@ -30,8 +30,8 @@ object fmComponentConfig: TfmComponentConfig
     FocusControl = DBEdit2
   end
   object Label3: TLabel
-    Left = 648
-    Top = 64
+    Left = 900
+    Top = 21
     Width = 50
     Height = 13
     Caption = 'baud_rate'
@@ -243,8 +243,8 @@ object fmComponentConfig: TfmComponentConfig
     TabOrder = 7
   end
   object DBEdit3: TDBEdit
-    Left = 648
-    Top = 80
+    Left = 900
+    Top = 37
     Width = 134
     Height = 21
     DataField = 'baud_rate'
@@ -349,5 +349,17 @@ object fmComponentConfig: TfmComponentConfig
     DataField = 'interval'
     DataSource = dm.dsOper
     TabOrder = 19
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 446
+    Top = 448
+    Width = 67
+    Height = 17
+    Caption = 'checksum'
+    DataField = 'checksum'
+    DataSource = dm.dsOper
+    TabOrder = 20
+    ValueChecked = 'True'
+    ValueUnchecked = 'False'
   end
 end

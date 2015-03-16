@@ -106,9 +106,91 @@ object dm: Tdm
     Active = True
     Connection = dbConn
     CursorType = ctStatic
+    IndexFieldNames = 'component_id'
+    MasterFields = 'Id'
+    MasterSource = dsComp
     TableName = 'operation'
     Left = 48
     Top = 136
+    object tbOperationId: TAutoIncField
+      FieldName = 'Id'
+      ReadOnly = True
+    end
+    object tbOperationtype: TIntegerField
+      FieldName = 'type'
+    end
+    object tbOperationdesc: TWideStringField
+      FieldName = 'desc'
+      Size = 50
+    end
+    object tbOperationwrite_tpl: TStringField
+      FieldName = 'write_tpl'
+      Size = 500
+    end
+    object tbOperationread_tpl: TStringField
+      FieldName = 'read_tpl'
+      Size = 500
+    end
+    object tbOperationwpara1: TStringField
+      FieldName = 'wpara1'
+      Size = 50
+    end
+    object tbOperationwpara2: TStringField
+      FieldName = 'wpara2'
+      Size = 50
+    end
+    object tbOperationwpara3: TStringField
+      FieldName = 'wpara3'
+      Size = 50
+    end
+    object tbOperationwpara4: TStringField
+      FieldName = 'wpara4'
+      Size = 50
+    end
+    object tbOperationwpara5: TStringField
+      FieldName = 'wpara5'
+      Size = 50
+    end
+    object tbOperationwpara6: TStringField
+      FieldName = 'wpara6'
+      Size = 50
+    end
+    object tbOperationrpara1: TStringField
+      FieldName = 'rpara1'
+      Size = 50
+    end
+    object tbOperationrpara2: TStringField
+      FieldName = 'rpara2'
+      Size = 50
+    end
+    object tbOperationrpara3: TStringField
+      FieldName = 'rpara3'
+      Size = 50
+    end
+    object tbOperationrpara4: TStringField
+      FieldName = 'rpara4'
+      Size = 50
+    end
+    object tbOperationrpara5: TStringField
+      FieldName = 'rpara5'
+      Size = 50
+    end
+    object tbOperationrpara6: TStringField
+      FieldName = 'rpara6'
+      Size = 50
+    end
+    object tbOperationtimes: TIntegerField
+      FieldName = 'times'
+    end
+    object tbOperationinterval: TIntegerField
+      FieldName = 'interval'
+    end
+    object tbOperationchecksum: TBooleanField
+      FieldName = 'checksum'
+    end
+    object tbOperationcomponent_id: TIntegerField
+      FieldName = 'component_id'
+    end
   end
   object dsOper: TDataSource
     DataSet = tbOperation

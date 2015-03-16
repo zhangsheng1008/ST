@@ -36,6 +36,27 @@ __published:	// IDE-managed Components
 	TIntegerField *tbComponentbyte_size;
 	TIntegerField *tbComponentparity;
 	TIntegerField *tbComponentfparity;
+	TAutoIncField *tbOperationId;
+	TIntegerField *tbOperationtype;
+	TWideStringField *tbOperationdesc;
+	TStringField *tbOperationwrite_tpl;
+	TStringField *tbOperationread_tpl;
+	TStringField *tbOperationwpara1;
+	TStringField *tbOperationwpara2;
+	TStringField *tbOperationwpara3;
+	TStringField *tbOperationwpara4;
+	TStringField *tbOperationwpara5;
+	TStringField *tbOperationwpara6;
+	TStringField *tbOperationrpara1;
+	TStringField *tbOperationrpara2;
+	TStringField *tbOperationrpara3;
+	TStringField *tbOperationrpara4;
+	TStringField *tbOperationrpara5;
+	TStringField *tbOperationrpara6;
+	TIntegerField *tbOperationtimes;
+	TIntegerField *tbOperationinterval;
+	TBooleanField *tbOperationchecksum;
+	TIntegerField *tbOperationcomponent_id;
 private:	// User declarations
 public:		// User declarations
 	__fastcall Tdm(TComponent* Owner);

@@ -47,6 +47,7 @@ typedef struct {
 	String commandPara[6];
 	String returnTemplate;
 	String returnPara[6];
+	bool   checkSum;
 } Operation;
 
 class Action {

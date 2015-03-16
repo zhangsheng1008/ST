@@ -34,6 +34,15 @@ void ComponentAction::buildCommand(){
 	  unsigned int len;
 	  command = convertHexCommand(command_str, &len);
 	  command_size = len;
+	  unsigned int sum;
+	  if (operation->checkSum) {
+		 for (int i = 0; i < len - 1; i++) {
+		   sum = sum + command[i];
+		   if (sum > 255)
+			  sum = sum - 255;
+		 }
+		 command[len-1] = sum;
+	  }
 	} else {
 	  command = command_str.t_str();
 	  command_size = command_str.Length();

@@ -50,6 +50,7 @@ __published:	// IDE-managed Components
 	TDBEdit *DBEdit13;
 	TLabel *Label14;
 	TDBEdit *DBEdit14;
+	TDBCheckBox *DBCheckBox1;
 	void __fastcall btnSendClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
