@@ -16,8 +16,11 @@
 #pragma package(smart_init)
 using namespace std;
 
+const char* HEX_REGEX = "([0-9a-fA-F]{2}?)";
+const char* COMMMAND_TEMPLATE_REGEX = "(\\{\\d\\.\\d\\})|(\\{\\d\\})";
+
 String _fastcall paraProcess(String src, String para[]){
-	boost::regex reg("(\\{\\d\\.\\d\\})|(\\{\\d\\})");
+	boost::regex reg(COMMMAND_TEMPLATE_REGEX);
 	int i = 1;
 	boost::smatch m;
 	String strRep;

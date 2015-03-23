@@ -8,16 +8,14 @@
 
 const int CTYPE_COMPORT = 0;
 const int CTYPE_VALVE = 1;
-const int CTYPE_TEMPERATURE = 2;
 const int CTYPE_PRESSURE = 3;
 const int CTYPE_FCL = 4;
-const int CTYPE_FLOWMETER = 5;
+const int CTYPE_TEMPERATURE = 5;
 const int CTYPE_ANALYZER = 6;
 
-const int OPER_OPEN = 1;
-const int OPER_CLOSE = 2;
-const int OPER_READ = 3;
-const int OPER_WRITE = 4;
+
+const int OPER_READ = 2;
+const int OPER_WRITE = 1;
 
 const int PROC_STATUS_START = 1;
 const int PROC_STATUS_END = 2;
@@ -29,6 +27,8 @@ const int ERR_OPEN_PORT = 1;
 const int ERR_SET_PORT = 2;
 const int ERR_READ_PORT = 3;
 const int ERR_WRITE_PORT = 4;
+
+
 
 typedef struct {
 	int type;
@@ -91,9 +91,9 @@ class ComponentAction : public Action {
 		HANDLE hCom;
 		int openComPort();
 		int closeComPort();
-		String sendCommand();
-		//void recieve();
-		//void char_recieve();
+		void sendCommand();
+		int readCom();
+		int analyze();
 		void buildCommand();
 		virtual void processResult();
 	public:

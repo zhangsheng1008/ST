@@ -48,6 +48,7 @@ Operation* __fastcall loadOperation(){
 	operation->returnTemplate = dm->tbOperation->FieldByName("read_tpl")->AsString;
 	operation->interval = dm->tbOperation->FieldByName("interval")->AsInteger;
 	operation->checkSum = dm->tbOperation->FieldByName("checksum")->AsBoolean;
+	operation->type = dm->tbOperation->FieldByName("type")->AsInteger;
 	return operation;
 }
 void __fastcall TfmComponentConfig::btnSendClick(TObject *Sender)

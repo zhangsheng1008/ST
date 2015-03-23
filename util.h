@@ -11,7 +11,6 @@
 //---------------------------------------------------------------------------
 
 
-const char* HEX_REGEX = "([0-9a-fA-F]{2}?)";
 
 const String REG_LEFT_SYMBOL = "{";
 const String REG_RIGHT_SYMBOL = "}";
